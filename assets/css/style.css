@@ -2,3 +2,24 @@
     margin-top: 20px;
     margin-bottom: -10px;
 }
+
+.gifResult {
+    height: auto;
+    width: 300px;
+    margin: 2px;
+}
+
+.buttonCard {
+    margin-right: 0px;
+}
+
+#buttonRow.card-body {
+    margin-right: 0px;
+    min-height: 88px;
+    
+}
+
+.rowButtons {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

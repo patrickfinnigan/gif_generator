@@ -6,18 +6,21 @@ $("#submit").on("click", function () {
 
     var animalButton = $("<button>");
     animalButton.attr("data-animal", animalValue);
-    animalButton.addClass("rowButtons");
+    animalButton.addClass("rowButtons btn btn-outline-primary");
     animalButton.append(animalValue);
+    animalButton.attr("id", animalValue);
 
     $("#buttonRow").append(animalButton);
 
     $("animalEntry").val('')
 
+
+
 });
 
 
 
-$("#rowButtons").on("click", function () {
+$(document).on("click", ".rowButtons", function () {
     var animal = $(this).attr("data-animal");
     console.log(animal);
 
@@ -30,13 +33,14 @@ $("#rowButtons").on("click", function () {
         method: "GET"
     }).then(function (response) {
 
-        var buttonAnimal = $(this).attr(animalValue);
-        console.log(buttonAnimal);
+        // var buttonAnimal = $(this).attr(animalValue);
+        console.log(response);
 
         var results = response.data;
 
-        for (let i = 0; i < array.length; i++) {
-
+        for (let i = 0; i < results.length; i++) {
+            var image = $("<img>").attr("src", results[i].images.original.url).addClass("gifResult");
+            $("#gifRow").append(image);
         }
 
     });
