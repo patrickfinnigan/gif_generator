@@ -39,9 +39,42 @@ $(document).on("click", ".rowButtons", function () {
         var results = response.data;
 
         for (let i = 0; i < results.length; i++) {
-            var image = $("<img>").attr("src", results[i].images.original.url).addClass("gifResult");
-            $("#gifRow").append(image);
+            var image = $("<img>").attr({
+                src: `${results[i].images.original_still.url}`,
+                still: `${results[i].images.original_still.url}`,
+                active: `${results[i].images.original.url}`,
+                dataState: "still"
+            }).addClass("gifResult");
+
+            var rating = results[i].rating
+
+            var p = $("<p>").text("Rating: " + rating)
+
+            var theGif = $("<div class='gif'>");
+
+            theGif.prepend(p);
+            theGif.prepend(image);
+
+
+            $("#gifRow").append(theGif);
+
         }
+
+        $(".gifResult").on("click", function () {
+
+            var state = $(this).attr("dataState");
+
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("active"));
+                $(this).attr("dataState", "active");
+
+            } else if (state === "active") {
+                $(this).attr("src", $(this).attr("still"));
+                $(this).attr("dataState", "still");
+            }
+
+        });
+
 
     });
 
