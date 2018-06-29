@@ -6,15 +6,13 @@ $("#submit").on("click", function () {
 
     var animalButton = $("<button>");
     animalButton.attr("data-animal", animalValue);
-    animalButton.addClass("rowButtons btn btn-outline-primary");
+    animalButton.addClass("rowButtons btn btn-outline-light");
     animalButton.append(animalValue);
     animalButton.attr("id", animalValue);
 
     $("#buttonRow").append(animalButton);
 
     $("animalEntry").val('')
-
-
 
 });
 
@@ -56,7 +54,7 @@ $(document).on("click", ".rowButtons", function () {
             theGif.prepend(image);
 
 
-            $("#gifRow").append(theGif);
+            $("#gifRow").prepend(theGif);
 
         }
 
@@ -74,7 +72,6 @@ $(document).on("click", ".rowButtons", function () {
             }
 
         });
-
 
     });
 
